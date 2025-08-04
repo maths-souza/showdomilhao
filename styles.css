@@ -1,0 +1,602 @@
+/* Reiniciar e Estilos Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.conteiner {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 1.25rem;
+    min-height: 100vh;
+}
+
+/* Gerenciamento de Telas */
+.tela {
+    display: none;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tela.ativa {
+    display: flex;
+}
+
+/* Tela de Boas-Vindas */
+.conteudo-boas-vindas {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3.75rem 2.5rem;
+    border-radius: 1.25rem;
+    backdrop-filter: blur(0.625rem);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.3);
+}
+
+.titulo-jogo {
+    font-size: 3.5rem;
+    margin-bottom: 1.25rem;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+.titulo-jogo i {
+    margin-right: 0.9rem;
+    font-size: 3rem;
+}
+
+.descricao-jogo {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+/* Botões */
+.botao {
+    padding: 0.8em 1.7em;
+    /* 15px, 30px ÷ 17.6px (1.1rem) */
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    text-decoration: none;
+    background: transparent;
+    color: inherit;
+}
+
+.botao-primario {
+    background: linear-gradient(45deg, #ffd700, #ffed4a);
+    color: #1a1a2e;
+}
+
+.botao-primario:hover {
+    background: linear-gradient(45deg, #ffed4a, #ffd700);
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.6rem 1.2rem rgba(255, 215, 0, 0.3);
+}
+
+.botao-secundario {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.botao-secundario:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-0.1rem);
+}
+
+/* Tela do Jogo */
+#tela-jogo {
+    align-items: flex-start;
+    padding-top: 1.2rem;
+}
+
+/* Cabeçalho */
+.cabeçalho-jogo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.9rem;
+    backdrop-filter: blur(0.625rem);
+}
+
+.info-progresso {
+    display: flex;
+    gap: 1.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.contador-pergunta {
+    color: #ffd700;
+}
+
+.pontuacao {
+    color: #4ade80;
+}
+
+.controles-jogo {
+    display: flex;
+    gap: 0.6rem;
+}
+
+/* Barra de Progresso */
+.barra-progresso {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    margin-bottom: 1.8rem;
+    overflow: hidden;
+}
+
+.preenchimento-progresso {
+    height: 100%;
+    background: linear-gradient(90deg, #ffd700, #4ade80);
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 4px;
+}
+
+/* Seção da Pergunta */
+.secao-pergunta {
+    width: 100%;
+    margin-bottom: 1.8rem;
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner-pergunta {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.8rem;
+    border-radius: 0.9rem;
+    backdrop-filter: blur(0.6rem);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    max-width: 50rem;
+}
+
+.texto-pergunta {
+    font-size: 1.5rem;
+    margin-bottom: 0.9rem;
+    line-height: 1.4;
+}
+
+.etiqueta-categoria {
+    display: inline-block;
+}
+
+.etiqueta-categoria span {
+    background: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+    padding: 0.3em 1em;
+    /* 5px, 15px ÷ 14.4px (0.9rem) */
+    border-radius: 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Temporizador */
+.secao-temporizador {
+    width: 100%;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.exibir-temporizador {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.7em 1.2em;
+    /* 15px, 25px ÷ 20.8px (1.3rem) */
+    border-radius: 0.6rem;
+    backdrop-filter: blur(0.6rem);
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffd700;
+    min-width: 7.5rem;
+}
+
+.exibir-temporizador.aviso {
+    border-color: #f87171;
+    color: #f87171;
+    animation: pulsar 1s infinite;
+}
+
+@keyframes pulsar {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Seção de Ajuda */
+.secao-ajuda {
+    width: 100%;
+    margin-bottom: 1.8rem;
+    text-align: center;
+}
+
+.secao-ajuda h3 {
+    margin-bottom: 0.9rem;
+    color: #ffd700;
+    font-size: 1.2rem;
+}
+
+.botoes-ajuda {
+    display: flex;
+    gap: 0.9rem;
+    justify-content: center;
+}
+
+.botao-ajuda {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #ffd700;
+    padding: 0.6em 1em;
+    /* 12px, 20px ÷ 19.2px (1.2rem) */
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.botao-ajuda:hover:not(:disabled) {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: #ffd700;
+    transform: translateY(-0.1rem);
+}
+
+.botao-ajuda:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contador-ajuda {
+    background: #ffd700;
+    color: #1a1a2e;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.botao-ajuda:disabled .contador-ajuda {
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Seção de Respostas */
+.secao-respostas {
+    width: 100%;
+    margin-bottom: 1.8rem;
+}
+
+.grade-respostas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+}
+
+.botao-resposta {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    padding: 1.1em;
+    /* 20px ÷ 17.6px (1.1rem) */
+    border-radius: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-size: 1.1rem;
+    backdrop-filter: blur(0.6rem);
+}
+
+.botao-resposta:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #ffd700;
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.6rem 1.25rem rgba(0, 0, 0, 0.2);
+}
+
+.botao-resposta.selecionado {
+    background: rgba(255, 215, 0, 0.3);
+    border-color: #ffd700;
+    color: #ffd700;
+}
+
+.botao-resposta.correto {
+    background: rgba(74, 222, 128, 0.3);
+    border-color: #4ade80;
+    color: #4ade80;
+}
+
+.botao-resposta.incorreto {
+    background: rgba(248, 113, 113, 0.3);
+    border-color: #f87171;
+    color: #f87171;
+}
+
+.botao-resposta.eliminado {
+    opacity: 0.3;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    cursor: not-allowed;
+}
+
+.botao-resposta:disabled {
+    cursor: not-allowed;
+}
+
+.letra-resposta {
+    background: rgba(255, 255, 255, 0.2);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.botao-resposta.selecionado .letra-resposta {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+
+.botao-resposta.correto .letra-resposta {
+    background: #4ade80;
+    color: #1a1a2e;
+}
+
+.botao-resposta.incorreto .letra-resposta {
+    background: #f87171;
+    color: #1a1a2e;
+}
+
+.texto-resposta {
+    flex: 1;
+    line-height: 1.4;
+}
+
+/* Seção de Feedback */
+.secao-feedback {
+    width: 100%;
+    margin-bottom: 1.8rem;
+}
+
+.secao-feedback.oculta {
+    display: none;
+}
+
+.conteudo-feedback {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.8rem;
+    border-radius: 0.9rem;
+    backdrop-filter: blur(0.6rem);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.mensagem-feedback {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.mensagem-feedback.correto {
+    color: #4ade80;
+}
+
+.mensagem-feedback.incorreto {
+    color: #f87171;
+}
+
+/* Tela de Resultados */
+.conteudo-resultados {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3.75rem 2.5rem;
+    border-radius: 1.2rem;
+    backdrop-filter: blur(0.625rem);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 1.2rem 2.5rem rgba(0, 0, 0, 0.3);
+    max-width: 37.5rem;
+}
+
+.titulo-resultados {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.titulo-resultados i {
+    margin-right: 0.9rem;
+}
+
+.estatisticas-resultados {
+    margin-bottom: 1.8rem;
+}
+
+.estatistica {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1.2rem;
+}
+
+.estatistica:last-child {
+    border-bottom: none;
+}
+
+.rotulo-estatistica {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.valor-estatistica {
+    font-weight: bold;
+    color: #ffd700;
+    font-size: 1.3rem;
+}
+
+.mensagem-resultados {
+    margin-bottom: 1.8rem;
+}
+
+.mensagem-resultados p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.açoes-resultados {
+    display: flex;
+    justify-content: center;
+}
+
+/* Design Responsivo */
+@media (max-width: 768px) {
+    .conteiner {
+        padding: 0.6rem;
+    }
+
+    .titulo-jogo {
+        font-size: 2.5rem;
+    }
+
+    .titulo-jogo i {
+        font-size: 2rem;
+    }
+
+    .cabeçalho-jogo {
+        flex-direction: column;
+        gap: 1.2rem;
+        text-align: center;
+    }
+
+    .info-progresso {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .grade-respostas {
+        grid-template-columns: 1fr;
+    }
+
+    .botoes-ajuda {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .texto-pergunta {
+        font-size: 1.3rem;
+    }
+
+    .conteudo-boas-vindas,
+    .conteudo-resultados {
+        padding: 2.5rem 1.2rem;
+    }
+
+    .titulo-resultados {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-jogo {
+        font-size: 2rem;
+    }
+
+    .titulo-jogo i {
+        font-size: 1.5rem;
+    }
+
+    .botao-resposta {
+        padding: 0.8em;
+        /* 15px ÷ 17.6px (1.1rem, antes 1rem) */
+        font-size: 1rem;
+    }
+
+    .conteiner-pergunta {
+        padding: 1.2rem;
+    }
+
+    .texto-pergunta {
+        font-size: 1.1rem;
+    }
+
+    .titulo-resultados {
+        font-size: 2rem;
+    }
+
+    .estatistica {
+        font-size: 1rem;
+    }
+
+    .valor-estatistica {
+        font-size: 1.1rem;
+    }
+}
+
+/* Classes Utilitárias */
+.oculta {
+    display: none !important;
+}
+
+.texto-centro {
+    text-align: center;
+}
+
+.mb-20 {
+    margin-bottom: 1.2rem;
+}
+
+.mt-20 {
+    margin-top: 1.2rem;
+}
