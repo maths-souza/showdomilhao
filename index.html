@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show do Milhão</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="conteiner">
+        <!-- Tela de Boas-Vindas -->
+        <div id="tela-boas-vindas" class="tela ativa">
+            <div class="conteudo-boas-vindas">
+                <h1 class="titulo-jogo">
+                    <i class="fas fa-trophy"></i>
+                    Este é o SHOW DO MILHÃO!
+                </h1>
+                <p class="descricao-jogo">Teste seu conhecimento sobre o Brasil com 10 perguntas desafiadoras!</p>
+                <button id="botao-iniciar-jogo" class="botao botao-primario">
+                    <i class="fas fa-play"></i> Iniciar Jogo
+                </button>
+            </div>
+        </div>
+
+        <!-- Tela do Jogo -->
+        <div id="tela-jogo" class="tela">
+            <!-- Cabeçalho -->
+            <header class="cabeçalho-jogo">
+                <div class="info-progresso">
+                    <span class="contador-pergunta">Pergunta <span id="pergunta-atual">1</span> de <span
+                            id="total-perguntas">10</span></span>
+                    <span class="pontuacao">Pontuação: <span id="pontuacao">0</span></span>
+                </div>
+                <div class="controles-jogo">
+                    <button id="botao-reiniciar" class="botao botao-secundario">
+                        <i class="fas fa-redo"></i> Reiniciar
+                    </button>
+                    <button id="botao-finalizar-jogo" class="botao botao-secundario">
+                        <i class="fas fa-stop"></i> Finalizar Jogo
+                    </button>
+                </div>
+            </header>
+
+            <!-- Barra de Progresso -->
+            <div class="barra-progresso">
+                <div id="preenchimento-progresso" class="preenchimento-progresso"></div>
+            </div>
+
+            <!-- Seção do Temporizador -->
+            <div class="secao-temporizador">
+                <div id="exibir-temporizador" class="exibir-temporizador">Tempo: 15s</div>
+            </div>
+
+            <!-- Seção da Pergunta -->
+            <div class="secao-pergunta">
+                <div class="conteiner-pergunta">
+                    <h2 id="texto-pergunta" class="texto-pergunta">Carregando pergunta...</h2>
+                    <div class="etiqueta-categoria">
+                        <span id="categoria-pergunta">Conhecimento Geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sistema de Ajuda -->
+            <div class="secao-ajuda">
+                <h3>Ajudas:</h3>
+                <div class="botoes-ajuda">
+                    <button id="botao-50-50" class="botao-ajuda" data-ajuda="cinquentaPorCinquenta">
+                        <i class="fas fa-percent"></i>
+                        50:50
+                        <span class="contador-ajuda" id="contador-50-50">1</span>
+                    </button>
+                    <button id="botao-pular-pergunta" class="botao-ajuda" data-ajuda="pularPergunta">
+                        <i class="fas fa-forward"></i>
+                        Pular
+                        <span class="contador-ajuda" id="contador-pular">1</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Seção de Respostas -->
+            <div class="secao-respostas">
+                <div class="grade-respostas">
+                    <button class="botao-resposta" data-resposta="A">
+                        <span class="letra-resposta">A</span>
+                        <span class="texto-resposta" id="resposta-a">Resposta A</span>
+                    </button>
+                    <button class="botao-resposta" data-resposta="B">
+                        <span class="letra-resposta">B</span>
+                        <span class="texto-resposta" id="resposta-b">Resposta B</span>
+                    </button>
+                    <button class="botao-resposta" data-resposta="C">
+                        <span class="letra-resposta">C</span>
+                        <span class="texto-resposta" id="resposta-c">Resposta C</span>
+                    </button>
+                    <button class="botao-resposta" data-resposta="D">
+                        <span class="letra-resposta">D</span>
+                        <span class="texto-resposta" id="resposta-d">Resposta D</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Seção de Feedback -->
+            <div id="secao-feedback" class="secao-feedback oculta">
+                <div class="conteudo-feedback">
+                    <div id="mensagem-feedback" class="mensagem-feedback"></div>
+                    <button id="botao-proxima-pergunta" class="botao botao-primario">
+                        <i class="fas fa-arrow-right"></i> Próxima Pergunta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela de Resultados -->
+        <div id="tela-resultados" class="tela">
+            <div class="conteudo-resultados">
+                <h1 class="titulo-resultados">
+                    <i class="fas fa-trophy"></i>
+                    Jogo Concluído!
+                </h1>
+                <div class="estatisticas-resultados">
+                    <div class="estatistica">
+                        <span class="rotulo-estatistica">Pontuação Final:</span>
+                        <span class="valor-estatistica" id="pontuacao-final">0</span>
+                    </div>
+                    <div class="estatistica">
+                        <span class="rotulo-estatistica">Respostas Corretas:</span>
+                        <span class="valor-estatistica" id="respostas-corretas">0</span>
+                    </div>
+                    <div class="estatistica">
+                        <span class="rotulo-estatistica">Total de Perguntas:</span>
+                        <span class="valor-estatistica" id="total-respondidas">0</span>
+                    </div>
+                    <div class="estatistica">
+                        <span class="rotulo-estatistica">Precisão:</span>
+                        <span class="valor-estatistica" id="precisao">0%</span>
+                    </div>
+                </div>
+                <div class="mensagem-resultados">
+                    <p id="mensagem-desempenho">Muito bem jogado!</p>
+                </div>
+                <div class="açoes-resultados">
+                    <button id="botao-jogar-novamente" class="botao botao-primario">
+                        <i class="fas fa-play"></i> Jogar Novamente
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="perguntas.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
